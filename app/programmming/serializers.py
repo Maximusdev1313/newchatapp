@@ -4,11 +4,12 @@ from .models import *
 
 
 class MassageSerializer(serializers.ModelSerializer):
+    answer = serializers.StringRelatedField(many=True, read_only=True)
     class Meta:
         model = Massage
-        fields ='__all__'
+        fields = ['id', 'category_name', 'name', 'massage', 'file', 'timestamp', 'answer']
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = '__all__'
+        fields = ['id', 'user_name', 'comment', 'answers']

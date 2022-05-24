@@ -14,6 +14,14 @@ class Category(models.Model):
     
     def __str__(self):
         return self.category_name
+class Comment(models.Model):
+    # user_comments = models.ForeignKey(Massage, on_delete=models.CASCADE)
+    user_name = models.CharField(max_length=100)
+    comment = models.TextField(max_length=2500)
+    answers = models.ForeignKey('Massage', on_delete=models.CASCADE, related_name='answer')
+
+    def __str__(self):
+        return self.comment
 
 class Massage(models.Model):
     category_name = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -21,16 +29,9 @@ class Massage(models.Model):
     massage = models.TextField(max_length=2500)
     file = models.FileField(blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
-
     class Meta:
         pass
 
     def __str__(self):
         return self.name
 
-class Comment(models.Model):
-    user_comments = models.ForeignKey(Massage, on_delete=models.CASCADE)
-    user_name = models.CharField(max_length=100)
-    comment = models.TextField(max_length=2500)
-    def __str__(self):
-        return self.comment

@@ -6,8 +6,8 @@ from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
 router.register('api', MassageViewSet)
-router.register('', CommentViewSet)
+router.register('api', CommentViewSet)
 urlpatterns = [
     path('', include(router.urls) ),
-    path('/comments/', include(router.urls) )
+    # path('/comments/', include(router.urls) )
 ]
