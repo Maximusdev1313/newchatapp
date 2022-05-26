@@ -18,6 +18,8 @@ class Comment(models.Model):
     # user_comments = models.ForeignKey(Massage, on_delete=models.CASCADE)
     user_name = models.CharField(max_length=100)
     comment = models.TextField(max_length=2500)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
     answers = models.ForeignKey('Massage', on_delete=models.CASCADE, related_name='answer')
 
     def __str__(self):
