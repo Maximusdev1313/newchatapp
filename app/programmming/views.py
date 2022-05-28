@@ -15,3 +15,7 @@ class CommentViewSet(ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
  
+
+class SimpleFilesViewSet(ModelViewSet):
+    queryset = SimpleFiles.objects.all()
+    serializer_class = SimpleFileSerializer

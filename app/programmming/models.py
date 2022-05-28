@@ -14,14 +14,17 @@ class Category(models.Model):
     
     def __str__(self):
         return self.category_name
+class File(models.Model):
+    file_field = models.FileField(blank=True, null=True)
+    title = models.CharField(max_length=2500, null=True)
+    files = models.ForeignKey('Massage', on_delete=models.CASCADE, related_name='files')
+    def __str__(self):
+        return self.title
 class Comment(models.Model):
     # user_comments = models.ForeignKey(Massage, on_delete=models.CASCADE)
     user_name = models.CharField(max_length=100)
     comment = models.TextField(max_length=2500)
-    timestamp = models.DateTimeField(auto_now_add=True)
-
     answers = models.ForeignKey('Massage', on_delete=models.CASCADE, related_name='answer')
-
     def __str__(self):
         return self.comment
 
@@ -29,7 +32,6 @@ class Massage(models.Model):
     category_name = models.ForeignKey(Category, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     massage = models.TextField(max_length=2500)
-    file = models.FileField(blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     class Meta:
         pass
@@ -37,3 +39,6 @@ class Massage(models.Model):
     def __str__(self):
         return self.name
 
+class SimpleFiles(models.Model):
+    discription = models.CharField(max_length=2500, null=True)
+    file = models.FileField(blank=True)
