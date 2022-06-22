@@ -7,7 +7,7 @@ from django.utils.text import slugify
 class Category(models.Model):
     category_name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=200 , blank=True)
-    
+    icon = models.CharField(max_length=50)
     def save(self, *args, **kwargs):
         self.slug = slugify(self.category_name)
         super(Category,self).save(*args, **kwargs)
@@ -24,12 +24,13 @@ class Comment(models.Model):
     # user_comments = models.ForeignKey(Massage, on_delete=models.CASCADE)
     user_name = models.CharField(max_length=100)
     comment = models.TextField(max_length=2500)
+    timestamp = models.DateTimeField(auto_now_add=True)
     answers = models.ForeignKey('Massage', on_delete=models.CASCADE, related_name='answer')
     def __str__(self):
         return self.comment
 
 class Massage(models.Model):
-    category_name = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category_name = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='category')
     name = models.CharField(max_length=100)
     massage = models.TextField(max_length=2500)
     timestamp = models.DateTimeField(auto_now_add=True)
