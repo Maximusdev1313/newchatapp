@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-uqm#zr1ds0tns+g06tf$oth%98#$ccg)=%@qb8i8k8z#i$8)5o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'maxmaximusdev.pythonanywhere.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
