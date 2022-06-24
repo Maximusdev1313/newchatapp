@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-uqm#zr1ds0tns+g06tf$oth%98#$ccg)=%@qb8i8k8z#i$8)5o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'maxmaximusdev.pythonanywhere.com']
 
 
 # Application definition
@@ -52,12 +52,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-CORS_ALLOWED_ORIGINS = [
-    "https://example.com",
-    "https://sub.example.com",
-    "http://localhost:8080",
-    "http://127.0.0.1:9000",
-]
+CORS_ALLOW_ALL_ORIGINS = True 
+CORS_ALLOW_CREDENTIALS = True
 ROOT_URLCONF = 'app.urls'
 
 TEMPLATES = [
